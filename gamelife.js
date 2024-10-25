@@ -46,17 +46,17 @@ class Life{
 
     neighborCount = function(row, col){
         var count=0;
-        count += getStatusAt(row-1, col-1);
-        count += getStatusAt(row-1, col); 
-        count += getStatusAt(row-1, col+1); 
+        count +=  this. getStatusAt(row-1, col-1);
+        count += this.getStatusAt(row-1, col); 
+        count += this.getStatusAt(row-1, col+1); 
         
-        count += getStatusAt(row, col-1);
+        count += this.getStatusAt(row, col-1);
 
-        count += getStatusAt(row, col+1); 
+        count += this.getStatusAt(row, col+1); 
         
-        count += getStatusAt(row+1, col-1); 
-        count += getStatusAt(row+1, col); 
-        count += getStatusAt(row+1, col+1);      
+        count += this.getStatusAt(row+1, col-1); 
+        count += this.getStatusAt(row+1, col); 
+        count += this.getStatusAt(row+1, col+1);      
         return count;   
     }
     getStatusAt = function(row, col){
