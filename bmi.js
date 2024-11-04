@@ -4,7 +4,7 @@ var bmi = weight/((height/100)**2);
 
 function calcbmi()
 {
-    var weight =document.getElementById("wei").value
+    var weight =Number(document.getElementById("wei").value)
     var height = document.getElementById("hei").value
     var bmi = weight/((height/100)**2);
     document.getElementById("bmi").innerHTML=bmi;
