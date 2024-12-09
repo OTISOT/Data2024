@@ -1,30 +1,42 @@
-function hanoiIterative(n, p1, p2, p3) {
-    // Total number of moves
+function hanoi(n, source, auxiliary, target) {
+    // Total moves required is 2^n - 1
     let totalMoves = Math.pow(2, n) - 1;
-
-    // Using these variables to represent the pegs
-    let source = p1;
-    let target = p3;
-    let auxiliary = p2;
-
-    // If the number of disks is even, swap target and auxiliary
+    
+    // If the number of disks is even, swap the auxiliary and target pegs
     if (n % 2 === 0) {
-        [target, auxiliary] = [auxiliary, target];
+        [auxiliary, target] = [target, auxiliary];
     }
 
-    for (let i = 1; i <= totalMoves; i++) {
-        if (i % 3 === 1) {
-            // Move disk from source to target
-            console.log(i+"Move disk from " + source + " to " + target);
-        } else if (i % 3 === 2) {
-            // Move disk from source to auxiliary
-            console.log(i+"Move disk from " + source + " to " + auxiliary);
-        } else if (i % 3 === 0) {
-            // Move disk from auxiliary to target
-            console.log(i+"Move disk from " + auxiliary + " to " + target);
+    // Simulate the moves
+    for (let move = 1; move <= totalMoves; move++) {
+        let from, to;
+
+        // Determine the source and target pegs for the current move
+        if (move % 3 === 1) {
+            from = source;
+            to = target;
+        } else if (move % 3 === 2) {
+            from = source;
+            to = auxiliary;
+        } else {
+            from = auxiliary;
+            to = target;
         }
+
+        // Determine the disk to move
+        let disk;
+        if (move % 3 === 1) {
+            disk = (move - 1) % n + 1; // Calculate which disk to move
+        } else if (move % 3 === 2) {
+            disk = (move - 1) % n + 1; // Same as above
+        } else {
+            disk = (move - 1) % n + 1; // Same as above
+        }
+
+        // Output the move
+        console.log(`Move disk ${disk} from ${from} to ${to}`);
     }
 }
 
 // Example usage:
-hanoiIterative(2, "P1", "P2", "P3");
+hanoi(3, "P1", "P2", "P3");
